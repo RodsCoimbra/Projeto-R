@@ -1,12 +1,12 @@
 library(ggplot2)
 library(rJava)
 library(xlsx)
-residuos <- read.xlsx("ResiduosPerCapita.xlsx", sheetName = "Quadro")
-Paises <- c(residuos[18,1], residuos[25,1], residuos[35,1])
-Quantidade <- as.double(c(residuos[18,2], residuos[25,2], residuos[35,2], residuos[18,3], residuos[25,3], residuos[35,3]))
-Anos <- rep(c("2004","2018"),times=c(3,3))
-df1 <- data.frame(Paises,Anos, Quantidade)
-ggplot(data = df1, aes(x=Paises, y= Quantidade, fill=Anos)) +  geom_bar(stat='identity',position = 'dodge')
+excel <- read.xlsx("ResiduosPerCapita.xlsx", sheetIndex = 1)  
+Anos <- rep(c("2004","2018"),times=c(3,3))        #repetir 3 vezes a string "2014" e depois 3 vezes "2018"
+Paises <- c(excel[18,1], excel[25,1], excel[35,1])  #Buscar nomes dos países
+Quantidade <- as.double(c(excel[18,2], excel[25,2], excel[35,2], excel[18,3], excel[25,3], excel[35,3]))  #Buscar dados das quantidades gastas dos países
+df <- data.frame(Paises,Anos, Quantidade)     #Criar um dataframe com todos os dados
+ggplot(data = df, aes(x=Paises, y= Quantidade, fill=Anos)) +  geom_bar(stat='identity',position.dodge = ()) #Cria gráfico
 
 
 
