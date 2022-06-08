@@ -10,11 +10,16 @@ for (i in 1:50){
 for (j in 1:m){
   X[i,j] <- mean(rexp(n,lambda))
 }}
-b =  qnorm((1+gama)/2)
-amplitude = (2*b)/(X*sqrt(n))
+b =  qnorm(1-(1-gama)/2)
+amp = (2*b)/(X*sqrt(n))
 for (i in 1:50){
-Media[i] = mean(amplitude[i, 1:m])
+Media[i] = mean(amp[i, 1:m])
 }
 df <- data.frame(Media)
 ggplot() + geom_line(data = df, aes(x = n, y = Media), size = 1) + 
-xlab("Dimensão da amostra") + ylab("Média das amplitudes")
+labs(x = "Dimensão da amostra", y = "Média das amplitudes", 
+title = "Média da Amplitude dos 1350 intervalos de confiança obtidos em função de n") +
+scale_x_continuous(breaks=seq(200,5000, by = 200)) +
+scale_y_continuous(breaks=seq(0.050,0.25, by = 0.025))
+  
+  

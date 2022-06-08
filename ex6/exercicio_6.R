@@ -12,8 +12,10 @@ Var = ((18-14)^2)/12
 desvio <- sqrt((Var/n))
 distri <- dnorm(Valor, mean = 16, sd = desvio)
 data <-data.frame(Valores_rand)
-ggplot() + geom_histogram(data = data, aes(x = Valores_rand , y = after_stat(density)), col="Black", fill = "DarkGreen", bins = 75) +
-geom_line(data = data, aes(x=Valor ,stat(y=distri)), size = 1.5) + xlab("Valores") + ylab("Freq. relativa")
+ggplot() + 
+geom_histogram(data = data, aes(x = Valores_rand , y = after_stat(density)), col="Black", fill = "DarkGreen", bins = 75)+
+geom_line(data = data, aes(x=Valor ,y=distri), size = 1.5) + 
+labs(x = "Valores", y = "Densidade", title = sprintf("Gráfico para n = %d",n))
 
 
 

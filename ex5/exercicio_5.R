@@ -15,4 +15,4 @@ nf = N - n
 valor_emp <- nf/N
 valor_teo = 1 - pexp(1, lambda)
 dif <- abs(valor_teo - valor_emp)
-print(dif)
+sprintf("%.6f",dif)

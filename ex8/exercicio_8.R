@@ -7,7 +7,7 @@ for (i in 1:m){
   x[i] = mean(rexp(n,lambda))
 }
 gama = 0.91
-b = qnorm((1+gama)/2)  #(1-gama)/2 e depois valor tabela
-amplitude = (2*b)/(x*sqrt(n))
-result = mean(amplitude)
-result
+b = qnorm(1-(1-gama)/2)  #(1-gama)/2 e depois valor tabela
+amp = (2*b)/(x*sqrt(n))
+res = mean(amp)
+sprintf("%.6f", res)
